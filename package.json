@@ -1,0 +1,12 @@
+{
+  "name": "contactbook",
+  "version": "1.0.0",
+  "description": "A terminal-based contact book built with TypeScript. It stores contacts with an id, name, email, and phone number. The app includes functions to add new contacts, list all contacts, search by name, and remove contacts by id.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
