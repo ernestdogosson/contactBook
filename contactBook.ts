@@ -28,10 +28,6 @@ function addContact(contact: Omit<Contact, "id">) {
   console.log(`Contact added: ${newContact.name}`);
 }
 
-addContact({ name: "ernest" });
-addContact({ name: "ernest", email: "jen@oldskool.com", phone: "123-45678" });
-addContact({ name: "dogo", phone: "0987-65433" });
-
 function listContacts() {
   // Check if no contact and print message
   if (contacts.length === 0) {
@@ -48,8 +44,6 @@ function listContacts() {
   }
 }
 
-listContacts();
-
 function findByName(name: string): Contact[] {
   // Find matching contact with name
   const matchingContacts = contacts.filter((contact) => contact.name === name);
@@ -65,4 +59,29 @@ function findByName(name: string): Contact[] {
   return matchingContacts;
 }
 
+function removeById(id: number): boolean {
+  // Find the index of the contact with the given ID
+  const index = contacts.findIndex((contact) => contact.id === id);
+
+  if (index === -1) {
+    console.log(`No contact found with ID ${id}.`);
+    return false;
+  }
+
+  // Remove the contact at that index
+  const [removedContact] = contacts.splice(index, 1);
+
+  console.log(
+    `Removed contact: ${removedContact!.name} (ID: ${removedContact!.id})`,
+  );
+
+  return true;
+}
+
+addContact({ name: "ernest" });
+addContact({ name: "ernest", email: "jen@oldskool.com", phone: "123-45678" });
+addContact({ name: "dogo", phone: "0987-65433" });
+listContacts();
 findByName("ernest");
+removeById(2);
+listContacts();
