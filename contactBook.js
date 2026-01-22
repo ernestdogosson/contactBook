@@ -17,7 +17,7 @@ function addContact(contact) {
     console.log(`Contact added: ${newContact.name}`);
 }
 addContact({ name: "ernest" });
-addContact({ name: "jen", email: "jen@oldskool.com", phone: "123-45678" });
+addContact({ name: "ernest", email: "jen@oldskool.com", phone: "123-45678" });
 addContact({ name: "dogo", phone: "0987-65433" });
 function listContacts() {
     // Check if no contact and print message
@@ -25,10 +25,24 @@ function listContacts() {
         console.log("No contacts found.");
         return;
     }
+    // Loop through Contacts and print list
     console.log("Contacts list:");
     for (const contact of contacts) {
-        console.log(`Contacts ${contact.id}:
-      ID: ${contact.id}, Name: ${contact.name}, Email: ${contact.email ?? "N/A"}, Phone: ${contact.phone ?? "N/A"}`);
+        console.log(`ID: ${contact.id}, Name: ${contact.name}, Email: ${contact.email ?? "N/A"}, Phone: ${contact.phone ?? "N/A"}`);
     }
 }
 listContacts();
+function findByName(name) {
+    // Find matching contact with name
+    const matchingContacts = contacts.filter((contact) => contact.name === name);
+    // Check if match is not found and print message or print contact list
+    if (matchingContacts.length === 0) {
+        console.log(`No contacts found for "${name}".`);
+    }
+    else {
+        console.log(`Contact list:`, matchingContacts);
+        console.log(`${matchingContacts.length} contact(s) found.`);
+    }
+    return matchingContacts;
+}
+findByName("ernest");

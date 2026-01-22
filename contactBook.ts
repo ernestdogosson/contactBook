@@ -29,7 +29,7 @@ function addContact(contact: Omit<Contact, "id">) {
 }
 
 addContact({ name: "ernest" });
-addContact({ name: "jen", email: "jen@oldskool.com", phone: "123-45678" });
+addContact({ name: "ernest", email: "jen@oldskool.com", phone: "123-45678" });
 addContact({ name: "dogo", phone: "0987-65433" });
 
 function listContacts() {
@@ -49,3 +49,20 @@ function listContacts() {
 }
 
 listContacts();
+
+function findByName(name: string): Contact[] {
+  // Find matching contact with name
+  const matchingContacts = contacts.filter((contact) => contact.name === name);
+
+  // Check if match is not found and print message or print contact list
+  if (matchingContacts.length === 0) {
+    console.log(`No contacts found for "${name}".`);
+  } else {
+    console.log(`Contact list:`, matchingContacts);
+    console.log(`${matchingContacts.length} contact(s) found.`);
+  }
+
+  return matchingContacts;
+}
+
+findByName("ernest");
